@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Sign in — Blockchain Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css?v=10">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <span class="brand-mark"><i class="fa-solid fa-cube"></i></span>Blockchain Chat
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link is-active" href="userLoginForm">User</a></li>
+                    <li class="nav-item"><a class="nav-link" href="adminLoginForm">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="app-main narrow">
+        <section class="panel panel-pad-lg">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
+                <span class="eyebrow"><i class="fa-solid fa-user-shield"></i> User Portal</span>
+                <span class="pill pill-active">Encrypted</span>
+            </div>
+
+            <h2 style="margin: 0 0 8px;">Welcome Back</h2>
+            <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom: 24px;">Sign in to unlock your blockchain message stream.</p>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="flash">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form action="userLoginCheck" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name='userUsername'
+                        placeholder="Enter your username" autocomplete="username" required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="userPassword"
+                        placeholder="••••••••••••" autocomplete="current-password" required>
+                </div>
+                <button type="submit" class="btn btn-login w-100">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In
+                </button>
+            </form>
+
+            <p style="margin:24px 0 0; text-align:center; color:var(--text-muted); font-size:0.92rem;">
+                Don't have an account? <a href="userRegisterForm" style="font-weight:700;">Create Account</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Blockchain Chat · Cryptographic &amp; Tamper-Proof Communication Network</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

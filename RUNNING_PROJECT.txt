@@ -1,0 +1,27 @@
+How to run this project
+=======================
+
+Easy Windows method:
+
+1. Double-click start.bat
+2. Open http://127.0.0.1:8000/
+
+PowerShell method:
+
+    .\start.ps1
+
+Docker method:
+
+    .\start-docker.bat
+
+To open it from another device on the same WiFi:
+
+1. Start the project on your main computer.
+2. Find your main computer's IP address.
+3. On the other device, open:
+
+    http://YOUR-COMPUTER-IP:8000/
+
+Example:
+
+    http://192.168.1.10:8000/

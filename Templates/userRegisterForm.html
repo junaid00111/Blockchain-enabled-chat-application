@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Create Account — Blockchain Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css?v=10">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <span class="brand-mark"><i class="fa-solid fa-cube"></i></span>Blockchain Chat
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link is-active" href="userLoginForm">User</a></li>
+                    <li class="nav-item"><a class="nav-link" href="adminLoginForm">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="app-main narrow">
+        <section class="panel panel-pad-lg">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
+                <span class="eyebrow"><i class="fa-solid fa-id-card"></i> Join Network</span>
+                <span class="pill pill-active">Web3 Ready</span>
+            </div>
+
+            <h2 style="margin:0 0 8px;">Register Identity</h2>
+            <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom: 24px;">Create your cryptographic profile on Blockchain Chat.</p>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="flash">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form method="post" action="userRegisterCheck" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" name="name"
+                        placeholder="Enter your full name" value="{{ form_data.name|default:'' }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username"
+                        placeholder="Choose unique username" value="{{ form_data.username|default:'' }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email"
+                        placeholder="Enter your email address" value="{{ form_data.email|default:'' }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile Number</label>
+                    <input type="tel" class="form-control" id="mobile" name="mobile"
+                        placeholder="Enter your mobile number" value="{{ form_data.mobile|default:'' }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                        placeholder="8+ chars with mixed case, number &amp; symbol" autocomplete="new-password" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="profile_picture" class="form-label">Profile Avatar (Optional)</label>
+                    <input type="file" class="form-control" id="profile_picture" name="profile_picture" accept="image/*">
+                </div>
+
+                <button type="submit" class="btn btn-register w-100">
+                    <i class="fa-solid fa-user-plus"></i> Create Cryptographic Account
+                </button>
+            </form>
+
+            <p style="margin:24px 0 0; text-align:center; color:var(--text-muted); font-size:0.92rem;">
+                Already have an account? <a href="userLoginForm" style="font-weight:700;">Sign In</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Blockchain Chat · Cryptographic &amp; Tamper-Proof Communication Network</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

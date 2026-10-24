@@ -1,0 +1,4 @@
+Watching for file changes with StatReloader
+[26/Aug/2026 22:06:20] "GET / HTTP/1.1" 200 6061
+[26/Aug/2026 22:06:21] "GET /userRegisterForm HTTP/1.1" 200 10480
+[26/Aug/2026 22:06:21] "GET /adminLoginForm HTTP/1.1" 200 9103

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Dashboard — Blockchain Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css?v=10">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="userHome">
+                <span class="brand-mark"><i class="fa-solid fa-cube"></i></span>Blockchain Chat
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link is-active" href="userHome"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Ulog"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="app-main">
+        <div class="dash-head">
+            <div>
+                <span class="eyebrow"><i class="fa-solid fa-circle-check"></i> Authenticated Node</span>
+                <h1>Welcome, {{ request.session.name }}</h1>
+                <p>Your session is cryptographic, tamper-evident, and synchronized with the local ledger.</p>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <span class="pill pill-active">Chain Connected</span>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <section class="panel" style="height:100%; display:flex; flex-direction:column; justify-content:space-between;">
+                    <div>
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                            <div class="brand-mark" style="width:40px; height:40px;">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size:1.3rem;">Start Encrypted Chat</h3>
+                                <p style="color:var(--text-muted); font-size:0.88rem; margin:0;">Direct person to person messaging with end-to-end encryption</p>
+                            </div>
+                        </div>
+                        <p style="color:var(--text-muted); margin: 16px 0 24px; font-size:0.95rem; line-height:1.6;">
+                            Search for any registered User in the network to open a private chat. Every transmitted message is hashed into immutable blocks.
+                        </p>
+                    </div>
+                    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                        <a class="btn btn-primary" href="search">
+                            <i class="fa-solid fa-magnifying-glass"></i> Search User
+                        </a>
+                        <a class="btn btn-ghost" href="clear_blocks">
+                            <i class="fa-solid fa-trash-can"></i> Delete local chats
+                        </a>
+                        <a class="btn btn-ghost" href="Ulog">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-lg-5">
+                <section class="panel" style="height:100%;">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+                        <i class="fa-solid fa-shield-halved" style="color:var(--primary); font-size:1.2rem;"></i>
+                        <h3 style="font-size:1.2rem;">Security Verification</h3>
+                    </div>
+                    <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;">
+                        <li style="display:flex; gap:14px; align-items:flex-start;">
+                            <div style="width:34px; height:34px; border-radius:10px; background:rgba(0,242,254,0.1); display:grid; place-items:center; color:var(--primary); flex-shrink:0;">
+                                <i class="fa-solid fa-lock"></i>
+                            </div>
+                            <div>
+                                <strong style="color:#fff; display:block; font-size:0.92rem;">AES-256-CBC Payload</strong>
+                                <span style="color:var(--text-muted); font-size:0.84rem;">Ciphertext protection before persistence</span>
+                            </div>
+                        </li>
+                        <li style="display:flex; gap:14px; align-items:flex-start;">
+                            <div style="width:34px; height:34px; border-radius:10px; background:rgba(16,185,129,0.1); display:grid; place-items:center; color:var(--accent-green); flex-shrink:0;">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <div>
+                                <strong style="color:#fff; display:block; font-size:0.92rem;">PoW Difficulty 4</strong>
+                                <span style="color:var(--text-muted); font-size:0.84rem;">Nonce mined per transaction block</span>
+                            </div>
+                        </li>
+                        <li style="display:flex; gap:14px; align-items:flex-start;">
+                            <div style="width:34px; height:34px; border-radius:10px; background:rgba(168,85,247,0.1); display:grid; place-items:center; color:#a855f7; flex-shrink:0;">
+                                <i class="fa-solid fa-link"></i>
+                            </div>
+                            <div>
+                                <strong style="color:#fff; display:block; font-size:0.92rem;">SHA-256 Merkle Chain</strong>
+                                <span style="color:var(--text-muted); font-size:0.84rem;">Continuous hash integrity chaining</span>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Blockchain Chat · Cryptographic &amp; Tamper-Proof Communication Network</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
